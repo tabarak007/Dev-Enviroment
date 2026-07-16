@@ -5,7 +5,7 @@ module "resource_group" {
   location = each.value.location
 }
 module "vnet" {
-  source              = "git::https://github.com/tabarak007/Module.git//Vnet?ref=main"
+  source              = "git::https://github.com/tabarak007/Module.git//virtual_network?ref=main"
   depends_on          = [module.resource_group]
   for_each            = var.vnet
   name                = each.value.name
