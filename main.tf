@@ -34,7 +34,7 @@ module "public_ip" {
 }
 module "netowrk" {
   source = "git::https://github.com/tabarak007/Module.git//nic?ref=main"
-}
+
   depends_on = [ module.public_ip ]
   nic    = var.nic
 }
