@@ -1,5 +1,5 @@
 module "resource_group" {
-  source   = "../module/resource_group"
+  source   = "git::https://github.com/tabarak007/Modules.git//module/Resource_group?ref=main"
   for_each = var.rg
   name     = each.value.name
   location = each.value.location
