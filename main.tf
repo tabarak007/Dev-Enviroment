@@ -5,7 +5,7 @@ module "resource_group" {
   location = each.value.location
 }
 module "vnet" {
-  source              = "../module/virtual_network"
+  source              = "git::https://github.com/tabarak007/Module.git//Vnet?ref=main"
   depends_on          = [module.resource_group]
   for_each            = var.vnet
   name                = each.value.name
@@ -14,7 +14,9 @@ module "vnet" {
   address_space       = each.value.address_space
 }
 module "super" {
-  source               = "../module/subnet"
+
+  source = "git::https://github.com/tabarak007/Module.git//subnet?ref=main"
+
   depends_on           = [module.vnet, module.resource_group]
   for_each             = var.subnet
   name                 = each.value.name
@@ -23,13 +25,16 @@ module "super" {
   address_prefix       = each.value.address_prefix
 }
 module "public_ip" {
-  source = "../module/public_ip"
+  
+  source = "git::https://github.com/tabarak007/Module.git//Public_IP?ref=main"
+
   depends_on = [ module.super ]
   public = var.public
 
 }
 module "netowrk" {
-  source = "../module/nic"
+  source = "git::https://github.com/tabarak007/Module.git//nic?ref=main"
+}
   depends_on = [ module.public_ip ]
   nic    = var.nic
 }
