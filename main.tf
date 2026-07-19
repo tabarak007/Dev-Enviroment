@@ -38,3 +38,13 @@ module "netowrk" {
   depends_on = [ module.public_ip ]
   nic    = var.nic
 }
+module "computer" {
+  source     = "git::https://github.com/tabarak007/Module.git//virtual_machine?ref=main"
+  depends_on = [module.netowrk]
+  vms        = var.vms
+}
+module "windows_vm" {
+  source     = "git::https://github.com/tabarak007/Module.git//window_virtual_machine?ref=main"
+  depends_on = [module.netowrk]
+  khidki     = var.khidki
+}
