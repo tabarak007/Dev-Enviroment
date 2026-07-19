@@ -60,4 +60,47 @@ nic = {
     public_ip_name       = "publicip1"
   }
 }
+vms = {
+  vm1 = {
+    name                            = "forntendvm"
+    location                        = "central india"
+    resource_group_name             = "popu"
+    vm_size                         = "Standard_D2s_v3"
+    publisher                       = "Canonical"
+    offer                           = "ubuntu-24_04-lts"
+    sku                             = "server"
+    version                         = "latest"
+    disk_name                       = "mydisk"
+    caching                         = "ReadWrite"
+    create_option                   = "FromImage"
+    managed_disk_type               = "Standard_LRS"
+    nic_name                        = "connect"
+    computer_name                   = "unms"
+    admin_username                  = "pgcil"
+    admin_password                  = "Pgcil123@123"
+    disable_password_authentication = false
+  }
+}
+
+khidki = {
+  vm2 = {
+    name                = "windowsvm"
+    location            = "central india"
+    resource_group_name = "popu"
+    vm_size             = "Standard_D2s_v3"
+    publisher           = "MicrosoftWindowsServer"
+    offer               = "WindowsServer"
+    sku                 = "2019-Datacenter"
+    version             = "latest"
+
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+
+    nic_name       = "connect2"
+    admin_username = "unms1"
+    admin_password = "unms1234@1234"
+
+  }
+}
+
 
