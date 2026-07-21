@@ -1,17 +1,11 @@
 module "resource_group" {
   source   = "git::https://github.com/tabarak007/Module.git//Resource_group?ref=main"
-  for_each = var.rg
-  name     = each.value.name
-  location = each.value.location
+ rg = var.rg
 }
 module "vnet" {
   source              = "git::https://github.com/tabarak007/Module.git//virtual_network?ref=main"
   depends_on          = [module.resource_group]
-  for_each            = var.vnet
-  name                = each.value.name
-  location            = each.value.location
-  resource_group_name = each.value.resource_group_name
-  address_space       = each.value.address_space
+  vnet               = var.vnet
 }
 module "super" {
 
@@ -19,10 +13,7 @@ module "super" {
 
   depends_on           = [module.vnet, module.resource_group]
   for_each             = var.subnet
-  name                 = each.value.name
-  resource_group_name  = each.value.resource_group_name
-  virtual_network_name = each.value.virtual_network_name
-  address_prefix       = each.value.address_prefix
+ subnet               = var.subnet
 }
 module "public_ip" {
   
