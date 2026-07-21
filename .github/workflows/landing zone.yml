@@ -1,0 +1,22 @@
+name: Azure 
+
+on:
+  workflow_dispatch:
+jobs:
+
+  azure-landing-zone:
+ 
+    runs-on: self-hosted
+
+    steps:
+ 
+      - uses: actions/checkout@v4
+        
+      - name: init
+        run: terraform init  
+        
+      - name: plan
+        run: terraform plan
+
+      - name: apply
+        run: terraform apply 
