@@ -1,0 +1,20 @@
+name: Azure 
+
+on:
+  workflow_dispatch:
+jobs:
+
+  azure-landing-zone-destroy:
+ 
+    runs-on: self-hosted
+
+    steps:
+ 
+      - uses: actions/checkout@v4
+        
+      - name: init
+        run: terraform init  
+        
+     
+      - name: destroy
+        run: terraform destroy -auto-approve
